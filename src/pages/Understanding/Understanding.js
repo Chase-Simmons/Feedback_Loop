@@ -8,7 +8,7 @@ class Understand extends Component {
 
   componentDidMount() {
     this.setState({
-      inputValue: this.props.store.getFeelingReducer,
+      inputValue: this.props.store.understandingReducer,
     });
   }
   onSubmit = (event) => {
@@ -34,7 +34,7 @@ class Understand extends Component {
   onNextClick = () => {
     if (this.state.inputValue !== '') {
       this.props.dispatch({
-        type: 'SET_FEELING',
+        type: 'SET_UNDERSTANDING',
         payload: this.state.inputValue,
       });
       this.props.history.push('/support');

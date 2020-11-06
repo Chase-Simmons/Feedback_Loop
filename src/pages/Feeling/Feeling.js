@@ -8,7 +8,7 @@ class Feeling extends Component {
 
   componentDidMount() {
     this.setState({
-      inputValue: this.props.store.getFeelingReducer,
+      inputValue: this.props.store.feelingReducer,
     });
   }
   onSubmit = (event) => {

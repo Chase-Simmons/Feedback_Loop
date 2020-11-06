@@ -11,37 +11,49 @@ import logger from 'redux-logger';
 let formObject = {
   feeling: '',
   understanding: '',
+  support: '',
+  comment: '',
 };
-const setFeelingReducer = (state = null, action) => {
+const feelingReducer = (state = formObject.feeling, action) => {
   if (action.type === 'SET_FEELING') {
     formObject.feeling = action.payload;
-    return formObject;
+    state = action.payload;
+    return state;
   }
-  return formObject;
+  return state;
 };
 
-const getFeelingReducer = (state = null, action) => {
-  return formObject.feeling;
-};
-
-const setUnderstandingReducer = (state = null, action) => {
-  if (action.type === 'SET_FEELING') {
+const understandingReducer = (state = formObject.understanding, action) => {
+  if (action.type === 'SET_UNDERSTANDING') {
     formObject.understanding = action.payload;
-    return formObject;
+    state = action.payload;
+    return state;
   }
-  return formObject;
+  return state;
 };
-
-const getUnderstandingReducer = (state = null, action) => {
-  return formObject.understanding;
+const supportReducer = (state = formObject.support, action) => {
+  if (action.type === 'SET_SUPPORT') {
+    formObject.support = action.payload;
+    state = action.payload;
+    return state;
+  }
+  return state;
+};
+const commentReducer = (state = formObject.comment, action) => {
+  if (action.type === 'SET_COMMENT') {
+    formObject.comment = action.payload;
+    state = action.payload;
+    return state;
+  }
+  return state;
 };
 
 const storeInstance = createStore(
   combineReducers({
-    setFeelingReducer,
-    getFeelingReducer,
-    setUnderstandingReducer,
-    getUnderstandingReducer,
+    feelingReducer,
+    understandingReducer,
+    supportReducer,
+    commentReducer,
   }),
   applyMiddleware(logger)
 );
