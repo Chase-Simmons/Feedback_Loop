@@ -28,6 +28,10 @@ class Feeling extends Component {
 
   onNextClick = () => {
     if (this.state.inputValue !== '') {
+      this.props.dispatch({
+        type: 'SET_FEELING',
+        payload: this.state.inputValue,
+      });
       this.props.history.push('/understanding');
     } else {
       swal('Please fill out form before moving on!');

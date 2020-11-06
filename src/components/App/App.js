@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import BackgroundVid from '../../background/Video.mp4';
 
 import Header from '../Header/Header';
 import FeelingPage from '../../pages/Feeling/Feeling';
@@ -16,10 +17,21 @@ class App extends Component {
         <div className="App">
           <Header />
           <main>
-            <Route exact path="/" component={FeelingPage} />
-            <Route exact path="/support" component={SupportPage} />
-            <Route exact path="/understanding" component={UnderstandingPage} />
-            <Route exact path="/comment" component={CommentPage} />
+            <video autoPlay loop className="video-background" muted playsInline>
+              <source src={BackgroundVid} type="video/mp4" />
+            </video>
+            <div className="main-container">
+              <div className="main-center-box">
+                <Route exact path="/" component={FeelingPage} />
+                <Route exact path="/support" component={SupportPage} />
+                <Route
+                  exact
+                  path="/understanding"
+                  component={UnderstandingPage}
+                />
+                <Route exact path="/comment" component={CommentPage} />
+              </div>
+            </div>
           </main>
         </div>
       </Router>

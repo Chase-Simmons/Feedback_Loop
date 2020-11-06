@@ -1,0 +1,10 @@
+.App-header {
+  color: #fffffe;
+  background-color: #242424;
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  min-height: 70px;
+  padding: 20px;
+}
