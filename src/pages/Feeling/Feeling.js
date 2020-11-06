@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import swal from 'sweetalert';
-import './Feeling.css';
+
+import { connect } from 'react-redux';
 
 class Feeling extends Component {
-  state = {
-    inputValue: '',
-  };
+  state = {};
+
+  componentDidMount() {
+    this.setState({
+      inputValue: this.props.store.getFeelingReducer,
+    });
+  }
   onSubmit = (event) => {
     console.log(event.target);
   };
@@ -37,13 +42,18 @@ class Feeling extends Component {
       swal('Please fill out form before moving on!');
     }
   };
+
+  onBackClick = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <div>
         <h3>How are you feeling today?</h3>
         <p>Feeling?</p>
         <form onSubmit={this.onSubmit} display="inline">
-          <button>Back</button>
+          {/* <button>Back</button> */}
           <input
             type="number"
             value={this.state.inputValue}
@@ -56,4 +66,8 @@ class Feeling extends Component {
   }
 }
 
-export default Feeling;
+const mapStoreToProps = (store) => ({
+  store,
+});
+
+export default connect(mapStoreToProps)(Feeling);

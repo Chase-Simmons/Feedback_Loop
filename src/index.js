@@ -8,13 +8,41 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-const feelingReducer = (state, action) => {
-  state = action.payload;
-  return state;
+let formObject = {
+  feeling: '',
+  understanding: '',
+};
+const setFeelingReducer = (state = null, action) => {
+  if (action.type === 'SET_FEELING') {
+    formObject.feeling = action.payload;
+    return formObject;
+  }
+  return formObject;
+};
+
+const getFeelingReducer = (state = null, action) => {
+  return formObject.feeling;
+};
+
+const setUnderstandingReducer = (state = null, action) => {
+  if (action.type === 'SET_FEELING') {
+    formObject.understanding = action.payload;
+    return formObject;
+  }
+  return formObject;
+};
+
+const getUnderstandingReducer = (state = null, action) => {
+  return formObject.understanding;
 };
 
 const storeInstance = createStore(
-  combineReducers({ feelingReducer }),
+  combineReducers({
+    setFeelingReducer,
+    getFeelingReducer,
+    setUnderstandingReducer,
+    getUnderstandingReducer,
+  }),
   applyMiddleware(logger)
 );
 
