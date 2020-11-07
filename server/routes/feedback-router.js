@@ -36,4 +36,19 @@ router.get('/', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  const feedbackId = req.params.id;
+  const queryText = `DELETE FROM "feedback" WHERE id=$1;`;
+  const queryArrayData = [feedbackId];
+
+  pool
+    .query(queryText, queryArrayData)
+    .then((dbResponse) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
 module.exports = router;
