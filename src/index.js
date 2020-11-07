@@ -68,6 +68,13 @@ const submitReducer = (state = null, action) => {
   return formObject;
 };
 
+const feedbackList = (state = [], action) => {
+  if (action.type === 'SET_FEEDBACK') {
+    return action.payload;
+  }
+  return state;
+};
+
 const storeInstance = createStore(
   combineReducers({
     feelingReducer,
@@ -77,6 +84,7 @@ const storeInstance = createStore(
     reviewReducer,
     submitReducer,
     resetFormReducer,
+    feedbackList,
   }),
   applyMiddleware(logger)
 );

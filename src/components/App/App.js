@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import BackgroundVid from '../../background/Video.mp4';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 import Header from '../Header/Header';
 import FeelingPage from '../../pages/Feeling/Feeling';
@@ -10,8 +12,28 @@ import UnderstandingPage from '../../pages/Understanding/Understanding';
 import CommentPage from '../../pages/Comments/Comments';
 import ReviewPage from '../../pages/Review/Review';
 import FeedbackPage from '../../pages/Feedback/Feedback';
+import AdminPage from '../../pages/Admin/Admin';
 
 class App extends Component {
+  componentDidMount() {
+    this.getAllFeedback();
+  }
+
+  getAllFeedback = () => {
+    axios
+      .get('/feedback')
+      .then((response) => {
+        console.log(response.data);
+        this.props.dispatch({
+          type: 'SET_FEEDBACK',
+          payload: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('ERROR');
+      });
+  };
   render() {
     return (
       <Router>
@@ -33,6 +55,7 @@ class App extends Component {
                 <Route exact path="/comment" component={CommentPage} />
                 <Route exact path="/review" component={ReviewPage} />
                 <Route exact path="/feedback" component={FeedbackPage} />
+                <Route exact path="/admin" component={AdminPage} />
               </div>
             </div>
           </main>
@@ -41,5 +64,8 @@ class App extends Component {
     );
   }
 }
+const mapStoreToProps = (store) => ({
+  store,
+});
 
-export default App;
+export default connect(mapStoreToProps)(App);
