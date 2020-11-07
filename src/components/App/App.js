@@ -44,6 +44,7 @@ class App extends Component {
               <source src={BackgroundVid} type="video/mp4" />
             </video>
             <div className="main-container">
+              <Route exact path="/admin" component={AdminPage} />
               <div className="main-center-box">
                 <Route exact path="/" component={FeelingPage} />
                 <Route
@@ -55,7 +56,6 @@ class App extends Component {
                 <Route exact path="/comment" component={CommentPage} />
                 <Route exact path="/review" component={ReviewPage} />
                 <Route exact path="/feedback" component={FeedbackPage} />
-                <Route exact path="/admin" component={AdminPage} />
               </div>
             </div>
           </main>
