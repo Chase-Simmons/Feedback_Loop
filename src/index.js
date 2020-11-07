@@ -48,12 +48,17 @@ const commentReducer = (state = formObject.comment, action) => {
   return state;
 };
 
+const reviewReducer = (state = null, action) => {
+  return formObject;
+};
+
 const storeInstance = createStore(
   combineReducers({
     feelingReducer,
     understandingReducer,
     supportReducer,
     commentReducer,
+    reviewReducer,
   }),
   applyMiddleware(logger)
 );
