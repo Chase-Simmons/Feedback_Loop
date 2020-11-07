@@ -35,12 +35,12 @@ How does someone use this application? Tell a user story here.
 
 ## Built With
 
-Axios
-React
-Redux
-PostgreSQL
-Node
-Express
+1. Axios
+2. React
+3. Redux
+4. PostgreSQL
+5. Node
+6. Express
 
 ## License
 
