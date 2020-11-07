@@ -48,6 +48,18 @@ const commentReducer = (state = formObject.comment, action) => {
   return state;
 };
 
+const resetFormReducer = (state = null, action) => {
+  if (action.type === 'RESET') {
+    formObject = {
+      feeling: '',
+      understanding: '',
+      support: '',
+      comment: '',
+    };
+  }
+  return state;
+};
+
 const reviewReducer = (state = null, action) => {
   return formObject;
 };
@@ -64,6 +76,7 @@ const storeInstance = createStore(
     commentReducer,
     reviewReducer,
     submitReducer,
+    resetFormReducer,
   }),
   applyMiddleware(logger)
 );

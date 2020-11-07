@@ -8,36 +8,40 @@ class Support extends Component {
   };
 
   onNextClick = () => {
+    this.props.dispatch({
+      type: 'RESET',
+    });
+    this.props.dispatch({
+      type: 'SET_FEELING',
+      payload: '',
+    });
+    this.props.dispatch({
+      type: 'SET_UNDERSTANDING',
+      payload: '',
+    });
+    this.props.dispatch({
+      type: 'SET_SUPPORT',
+      payload: '',
+    });
+    this.props.dispatch({
+      type: 'SET_COMMENT',
+      payload: '',
+    });
     this.props.history.push('/');
   };
 
-  onBackClick = () => {
-    this.props.history.goBack();
-  };
+  // onBackClick = () => {
+  //   this.props.history.goBack();
+  // };
 
   render() {
     return (
       <div>
-        <h3>Review Your Feedback</h3>
+        <h3>Thank You!</h3>
 
-        <div>
-          <p>
-            Feelings: <span>{this.props.store.reviewReducer.feeling}</span>
-          </p>
-          <p>
-            Understanding:{' '}
-            <span>{this.props.store.reviewReducer.understanding}</span>
-          </p>
-          <p>
-            Support: <span>{this.props.store.reviewReducer.support}</span>
-          </p>
-          <p>
-            Comments: <span>{this.props.store.reviewReducer.comment}</span>
-          </p>
-        </div>
         <form display="inline">
-          <button onClick={this.onBackClick}>Back</button>
-          <button onClick={this.onNextClick}>Submit</button>
+          {/* <button onClick={this.onBackClick}>Back</button> */}
+          <button onClick={this.onNextClick}>Leave New Feedback</button>
         </form>
       </div>
     );
