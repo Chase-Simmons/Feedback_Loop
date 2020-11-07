@@ -52,6 +52,10 @@ const reviewReducer = (state = null, action) => {
   return formObject;
 };
 
+const submitReducer = (state = null, action) => {
+  return formObject;
+};
+
 const storeInstance = createStore(
   combineReducers({
     feelingReducer,
@@ -59,6 +63,7 @@ const storeInstance = createStore(
     supportReducer,
     commentReducer,
     reviewReducer,
+    submitReducer,
   }),
   applyMiddleware(logger)
 );

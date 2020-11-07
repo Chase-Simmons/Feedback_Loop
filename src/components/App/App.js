@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import axios from 'axios';
 import './App.css';
 import BackgroundVid from '../../background/Video.mp4';
 

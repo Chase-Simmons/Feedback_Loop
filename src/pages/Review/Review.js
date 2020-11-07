@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import { connect } from 'react-redux';
 
 class Support extends Component {
@@ -8,16 +8,16 @@ class Support extends Component {
   };
 
   onNextClick = () => {
-    axios.post('/api/feedback', this.props.store.feedbackReducer)
+    console.log(this.props.store.submitReducer);
+    axios
+      .post('/feedback', this.props.store.submitReducer)
       .then((response) => {
-        console.log('POST - feedback', response);
+        this.props.history.push('/feedback');
       })
       .catch((err) => {
         console.log('Error:', err);
-        alert('Something went wrong while saving your feedback.');
+        alert('ERROR');
       });
-  }
-    this.props.history.push('/feedback');
   };
 
   onBackClick = () => {
